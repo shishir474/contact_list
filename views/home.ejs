@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>
+            <%= title %> <!--or we could to locals.title This would work too-->
+            <!--here when the page is rendered the value of the title variable is fetched from the js object, which then is the 
+            title of the page-->
+        </title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/home.css">
+    </head>
+    <body>
+        <h1 id="list">
+            <i class="far fa-address-book"></i>
+            My Contact Lists
+        </h1>
+
+   <!-- displaying contacts in form of a list -->
+        <!-- <ul>
+           <% for (let i of contact_list){ %>
+            
+            <li>
+                <p><%= i.name %></p>
+                <p><%= i.number %></p>
+            </li>
+            
+            <% } %> 
+        </ul> -->
+
+        <div id="contacts">
+           <% for (let i of contact_list){ %>
+       
+                <div id="innerdiv">
+                    <span id="name" style=" text-align:start"><%= i.name %></span>
+                    <span id="number"><%= i.number %></span>
+                </div>
+                <div class="deletebtn">
+                   <a href="/deletecontact/?id=<%=i._id %>">
+                    <i class="far fa-window-close"></i>
+                   </a>
+                </div>
+
+            <% } %>
+        </div>
+      
+     <div id="form">
+        
+        <form action="/createcontact" method="POST">
+            
+            <input type="text" name="name" placeholder="Enter Name" required>
+            <input type="number" name="number" placeholder="Enter Number" required>
+            <button type="submit" id="btn">Create New Contact</button>
+        </form>
+    </div>
+       
+
+
+         <script type="text/javascript" src="/js/home.js"></script>
+         
+    </body>
+</html>
